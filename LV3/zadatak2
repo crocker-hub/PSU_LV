@@ -1,0 +1,41 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+
+df = pd.read_csv("mtcars.csv")
+df['wt_kg'] = df['wt'] * 453.592  
+
+plt.figure(figsize=(8, 5))
+cylinders = [4, 6, 8]
+mpg_values = [df[df['cyl'] == cyl]['mpg'].mean() for cyl in cylinders]
+plt.bar(cylinders, mpg_values, color=['blue', 'green', 'red'])
+plt.xlabel("Broj cilindara")
+plt.ylabel("Potrošnja (mpg)")
+plt.title("Potrošnja automobila s 4, 6 i 8 cilindara")
+plt.show()
+
+plt.figure(figsize=(8, 5))
+plt.boxplot([df[df['cyl'] == cyl]['wt_kg'] for cyl in cylinders], labels=cylinders)
+plt.xlabel("Broj cilindara")
+plt.ylabel("Težina (kg)")
+plt.title("Distribucija težine automobila s 4, 6 i 8 cilindara")
+plt.show()
+
+plt.figure(figsize=(8, 5))
+manual_mpg = df[df['am'] == 1]['mpg']
+auto_mpg = df[df['am'] == 0]['mpg']
+plt.boxplot([auto_mpg, manual_mpg], labels=["Automatski", "Ručni"])
+plt.xlabel("Tip mjenjača")
+plt.ylabel("Potrošnja (mpg)")
+plt.title("Usporedba potrošnje između ručnih i automatskih mjenjača")
+plt.show()
+
+plt.figure(figsize=(8, 5))
+manual_cars = df[df['am'] == 1]
+auto_cars = df[df['am'] == 0]
+plt.scatter(auto_cars['hp'], auto_cars['qsec'], color='blue', label='Automatski')
+plt.scatter(manual_cars['hp'], manual_cars['qsec'], color='red', label='Ručni')
+plt.xlabel("Snaga (KS)")
+plt.ylabel("Ubrzanje (s)")
+plt.title("Odnos ubrzanja i snage - Ručni vs Automatski mjenjač")
+plt.legend()
+plt.show()
