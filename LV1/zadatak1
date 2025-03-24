@@ -1,0 +1,13 @@
+def total_euro(a,b):
+    c = a*b
+    print("total: ",c)
+
+
+print("Unesi radne sate: ")
+a = int(input())
+print("Unesi placu po satu: ")
+b = int(input())
+
+print("Radni sati: ",a)
+print("eura/h : ",b)
+total_euro(a,b)
