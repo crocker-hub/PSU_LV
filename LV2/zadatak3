@@ -1,0 +1,13 @@
+import numpy as np
+import matplotlib.pyplot as plt
+
+img = plt.imread("C:/Users/student/Desktop/tiger(1).png")
+
+plt.figure()
+plt.imshow(img, cmap=("gray")) 
+plt.show()
+
+osvijetljena_slika = np.clip(np.array(img), + 50,0,255)
+rotirana_slika = np.rot90(np.array(img),k=-1)
+zrcaljena_slika = np.fliplr(np.array(img))
+umanjena_slika = img.resize((img.width // 10, img.height // 10))
