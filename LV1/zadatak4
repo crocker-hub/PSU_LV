@@ -1,0 +1,20 @@
+def rijesi(fileime):
+    
+    with open(fileime, 'r') as fajl:
+        razineConf = []
+
+        for linija in fajl:
+            linija = linija.strip()
+            if linija.startswith("X-DSPAM-Confidence:"):
+                try:
+                    razina = float(linija.split(":")[1].strip())
+                    razineConf.append(razina)
+                except ValueError:
+                    print("Neispravno")
+
+        if razineConf:
+            prosjecna = sum(razineConf) / len(razineConf)
+            print("Prosjecna razina: ", prosjecna)
+
+filename = input("Unesi ime dadoteke: ")
+rijesi(filename)
