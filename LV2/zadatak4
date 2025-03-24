@@ -1,0 +1,18 @@
+import numpy as np
+import matplotlib.pyplot as plt
+def nacrtaj_tablicu(velicina_kvadrata, broj_kvadrata_visina, broj_kvadrata_sirina):
+    crni_kvadrat = np.zeros((velicina_kvadrata,velicina_kvadrata), dtype=np.uint8)
+    bijeli_kvadrat = np.ones((velicina_kvadrata,velicina_kvadrata), dtype=np.uint8) * 255
+
+    red_parni = np.hstack([bijeli_kvadrat if i % 2 == 0 else crni_kvadrat for i in range(broj_kvadrata_sirina)])
+    red_neparni = np.hstack([crni_kvadrat if i % 2 == 0 else bijeli_kvadrat for i in range(broj_kvadrata_sirina)])
+    
+
+    sahovnica = np.vstack([red_parni if i % 2 == 0 else red_neparni for i in range(broj_kvadrata_visina)])
+
+    return sahovnica
+
+img = nacrtaj_tablicu(50,4,5)
+plt.imshow(img, cmap='gray', vmin=0,vmax=255)
+plt.axis('off')
+plt.show()
