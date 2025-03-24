@@ -1,0 +1,21 @@
+brojevi = []
+a = 1
+
+while a == 1:
+    mojinput = input("Unesi broj: ")
+    if mojinput == "done":
+        break
+    
+    b = float(mojinput)
+    brojevi.append(b)
+if brojevi:
+    broj = len(brojevi)
+    prosjecni = sum(brojevi) / broj
+    minimum = min(brojevi)
+    maximum = max(brojevi)
+
+    print("brojevi: ", broj)
+    print("prosjecni: ", prosjecni)
+    print("maximum: ", minimum)
+    print("minimum: ",maximum)
+    print("sortirani: ", sorted(brojevi))
