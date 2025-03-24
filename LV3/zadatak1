@@ -1,0 +1,27 @@
+import pandas as pd
+
+df = pd.read_csv("mtcars.csv")
+
+print("Top 5 automobila po potrošnji goriva:")
+print(df.nlargest(5, 'mpg')[['car', 'mpg']])
+
+print("Najekonomičnija 3 automobila sa 8 cilindara:")
+print(df[df['cyl'] == 8].nsmallest(3, 'mpg')[['car', 'mpg']])
+
+avg_mpg_6_cyl = df[df['cyl'] == 6]['mpg'].mean()
+print(f"Srednja potrošnja automobila sa 6 cilindara: {avg_mpg_6_cyl:.2f} mpg")
+
+df['wt_lbs'] = df['wt'] * 1000  
+avg_mpg_4_cyl_weight = df[(df['cyl'] == 4) & (df['wt_lbs'].between(2000, 2200))]['mpg'].mean()
+print(f"Srednja potrošnja 4-cilindričnih automobila mase 2000-2200 lbs: {avg_mpg_4_cyl_weight:.2f} mpg")
+
+manual_count = df[df['am'] == 1].shape[0]
+auto_count = df[df['am'] == 0].shape[0]
+print(f"Automobila s rucnim mjenjacem: {manual_count}, s automatskim: {auto_count}")
+
+auto_over_100hp = df[(df['am'] == 0) & (df['hp'] > 100)].shape[0]
+print(f"Automobila s automatskim mjenjacem i snagom preko 100 KS: {auto_over_100hp}")
+
+df['wt_kg'] = df['wt'] * 453.592  
+print("Masa automobila u kg:")
+print(df[['car', 'wt_kg']])
