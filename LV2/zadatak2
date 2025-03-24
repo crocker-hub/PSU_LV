@@ -1,0 +1,41 @@
+import numpy as np
+import matplotlib.pyplot as plt
+
+data = np.loadtxt(open("C:/Users/student/Desktop/mtcars.csv", "rb"), usecols=(1,2,3,4,5,6), delimiter=",", skiprows=1)
+
+mpg = data[:, 0]
+hp = data[:, 3]
+wt = data[:, 4]
+cyl = data[:, 2]
+
+plt.scatter(hp,mpg)
+plt.xlabel("Konjske snage")
+plt.ylabel("Potrosnja goriva")
+plt.title("Ovisnost potrosnje goriva o konjskim snagama")
+plt.show()
+
+plt.scatter(hp,mpg,s=wt * 100)
+plt.xlabel("Konjske snage")
+plt.ylabel("Potrosnja goriva")
+plt.title("Potrosnja goriva vs konjske snage")
+plt.show()
+
+min_mpg = np.min(mpg)
+max_mpg = np.max(mpg)
+mean_mpg = np.mean(mpg)
+
+print("Minimalna potrosnja: {min_mpg}")
+print("Maksimalna potrosnja: {max_mpg}")
+print("Srednja potrosnja: {mean_mpg}")
+
+mask = cyl == 6
+mpg_6cyl = mpg[mask]
+
+min_mpg_6cyl = np.min(mpg_6cyl)
+max_mpg_6cyl = np.max(mpg_6cyl)
+mean_mpg_6cyl = np.mean(mpg_6cyl)
+
+print("Za vozila s 6 cilindara")
+print("Minimalna potrosnja: {min_mpg_6cyl}")
+print("Maksimalna potrosnja{max_mpg_6cyl}")
+print("Srednja potrosnja: {mean_mpg_6cyl}")
