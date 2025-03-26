@@ -1,2 +1,4 @@
-U zadatku 1 koristili smo linearni model, što znači da model može samo aproksimirati podatke s pravcem. Ako podaci imaju nelinearnu strukturu, linearni model neće moći dobro uhvatiti složenost funkcije.
-U zadatku 2 koristili smo polinomsku regresiju, gdje proširujemo model polinomskim članovima (npr. kvadratni, kubni i viši stupnjevi). To omogućava bolju prilagodbu podacima jer polinom može bolje opisati složene uzorke u podacima.
+Kada koristimo degree = 2, model je relativno jednostavan i možda neće dobro uhvatiti složenost podataka.
+Kada koristimo degree = 6, model bolje aproksimira podatke, ali još uvijek može imati dobru generalizaciju.
+Kada koristimo degree = 15, model postaje vrlo složen i vjerojatno dolazi do overfittinga – model savršeno prati trening podatke, ali na testnom skupu može imati visoku pogrešku.
+
