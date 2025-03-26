@@ -80,3 +80,36 @@ Najčešći broj sjedala: 5
 7.
 Prosječna kilometraža za dizel automobile: 88039.97 km
 Prosječna kilometraža za benzinske automobile: 54101.88 km
+
+kod: 
+import pandas as pd
+
+df = pd.read_csv('C:/Users/student/Desktop/cars_processed.csv')
+
+num_cars = df.shape[0]
+print(f'Broj automobila u datasetu: {num_cars}')
+
+types = df.dtypes
+print('Tipovi podataka u dataframeu:\n', types)
+
+df_sorted = df.sort_values(by='selling_price')
+most_expensive = df_sorted.iloc[-1]
+least_expensive = df_sorted.iloc[0]
+print(f'Najskuplji automobil:\n{most_expensive}')
+print(f'Najjeftiniji automobil:\n{least_expensive}')
+
+cars_2012 = df[df['year'] == 2012].shape[0]
+print(f'Broj automobila proizvedenih 2012. godine: {cars_2012}')
+
+most_km = df.iloc[df['km_driven'].idxmax()]
+least_km = df.iloc[df['km_driven'].idxmin()]
+print(f'Automobil s najviše kilometara:\n{most_km}')
+print(f'Automobil s najmanje kilometara:\n{least_km}')
+
+most_seats = df['seats'].mode()[0]
+print(f'Najčešći broj sjedala: {most_seats}')
+
+avg_km_diesel = df[df['fuel'] == 'Diesel']['km_driven'].mean()
+avg_km_petrol = df[df['fuel'] == 'Petrol']['km_driven'].mean()
+print(f'Prosječna kilometraža za dizel automobile: {avg_km_diesel:.2f} km')
+print(f'Prosječna kilometraža za benzinske automobile: {avg_km_petrol:.2f} km')
