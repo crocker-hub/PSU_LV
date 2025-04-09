@@ -1,0 +1,19 @@
+
+X, _ = generate_data(500, flagc=1)
+
+
+inertia_values = []
+
+for k in range(1, 21):
+    kmeans = KMeans(n_clusters=k, random_state=0)
+    kmeans.fit(X)
+    inertia_values.append(kmeans.inertia_)
+
+plt.figure(figsize=(10, 6))
+plt.plot(range(1, 21), inertia_values, marker='o')
+plt.title('Elbow metoda – vrednovanje KMeans modela')
+plt.xlabel('Broj klastera')
+plt.ylabel('Vrijednost kriterijske funkcije (inertia)')
+plt.xticks(range(1, 21))
+plt.grid(True)
+plt.show()
